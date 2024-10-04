@@ -16,10 +16,13 @@ if confirmation is "Unenroll" then
  -- do shell script "sudo profiles renew -type enrollment" with administrator privileges
  do shell script "sudo /usr/local/jamf/bin/Jamf RemoveMDMProfile" with administrator privileges
  do shell script "sudo /usr/local/jamf/bin/Jamf removeFramework" with administrator privileges
- do shell script "sudo reboot" with administrator privileges
- 
+
  -- Notify the user that unenrollment is complete
  display dialog "Jamf unenrollment completed." buttons {"OK"} default button "OK" with title "Unenroll Jamf"
+-- Force reboot now.
+ do shell script "sudo reboot" with administrator privileges
+ 
+
 else
  -- User canceled the operation
  display dialog "Jamf unenrollment canceled." buttons {"OK"} default button "OK" with title "Unenroll Jamf"
